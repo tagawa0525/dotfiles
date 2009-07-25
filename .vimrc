@@ -1,12 +1,13 @@
 "===============================================================================
 " General
 "===============================================================================
-filetype on               " detect the type of file
-filetype plugin indent on " Enable filetype-specific indenting and plugins
-set nocompatible          " get out of horrible vi-compatible mode
-set confirm               " enable error files and error jumping
-set history=10000         " How many lines of history to remember
-"set viminfo+=!            " make sure it can save viminfo
+filetype on                     " detect the type of file
+filetype plugin indent on       " Enable filetype-specific indenting and plugins
+set nocompatible                " get out of horrible vi-compatible mode
+set confirm                     " enable error files and error jumping
+set history=10000               " How many lines of history to remember
+set viminfo+=!                  " make sure it can save viminfo
+set viminfo+=n~/.vim/.viminfo   " change viminfo path
 "===============================================================================
 " Visual
 "===============================================================================
