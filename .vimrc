@@ -7,7 +7,6 @@ set nocompatible                " get out of horrible vi-compatible mode
 set confirm                     " enable error files and error jumping
 set history=10000               " How many lines of history to remember
 set viminfo+=!                  " make sure it can save viminfo
-set viminfo+=n~/.vim/.viminfo   " change viminfo path
 "===============================================================================
 " Visual
 "===============================================================================
@@ -51,8 +50,9 @@ set imsearch=0
 "===============================================================================
 set backup
 set swapfile
-set backupdir=$HOME/.vim/vimBackup
-set directory=$HOME/.vim/vimSwap
+set backupdir=$HOME/.vim/vimBackup  " change backupfile path
+set directory=$HOME/.vim/vimSwap    " change swapfile path
+set viminfo+=n~/.vim/.viminfo       " change viminfo path
 "===============================================================================
 " Indent
 "===============================================================================
@@ -86,16 +86,21 @@ set foldopen-=undo    " don't open folds when you undo stuff
 "===============================================================================
 " keymap
 "===============================================================================
+" command mode
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
 " normal mode
 nnoremap <unique> j gj
 nnoremap <unique> k gk
 nnoremap <unique> ; :
 nnoremap <unique> : ;
 " quick edit
-nnoremap <unique> <CR>    i<CR><Esc>
-nnoremap <unique> <Tab>   i<Tab><Esc><Right>
+"nnoremap <unique> <CR>    i<CR><Esc>
+"nnoremap <unique> <Tab>   i<Tab><Esc><Right>
 "nnoremap <unique> <Space> i<Space><Esc><Right>
-nnoremap <unique> <Space>   <C-f>
+"nnoremap <unique> <Space>   <C-f>
 " visual mode
 vnoremap <unique> j gj
 vnoremap <unique> k gk
@@ -116,7 +121,7 @@ nnoremap <unique> ,8  :e #8<CR>
 nnoremap <unique> ,9  :e #9<CR>
 " FuzzyFinder
 nnoremap <silent> <unique> ,b :FuzzyFinderBuffer<CR>
-nnoremap <silent> <unique> ,f :FuzzyFinderFile<CR>
+nnoremap <silent> <unique> ,e :FuzzyFinderFile<CR>
 nnoremap <silent> <unique> ,m :FuzzyFinderMruFile<CR>
 nnoremap <silent> <unique> ,d :FuzzyFinderDir<CR>
 nnoremap <silent> <unique> ,c :FuzzyFinderMruCmd<CR>
@@ -131,3 +136,5 @@ autocmd FileType scheme :let is_gauche=1
 "===============================================================================
 "" QuickRun
 let g:mapleader=","
+"" autocomplpop
+autocmd FileType * let g:AutoComplPop_CompleteOption='.,w,b,u,t,i'
