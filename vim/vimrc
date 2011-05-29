@@ -14,7 +14,7 @@ set number          " turn on line numbers
 set nowrap
 set ruler           " Always show current positions along the bottom
 set wildmenu        " turn on wild menu
-set scrolloff=6     " Keep 6 lines (top/bottom) for scope
+"set scrolloff=6     " Keep 6 lines (top/bottom) for scope
 set laststatus=2
 set statusline=[%{&fileencoding}][%{&fileformat}]%H%W\ %n%y:\ %f%<\ %r%m%=0x%B=%b\ (%l,%c)\ %P
 set showmatch       " show matching brackets
@@ -110,6 +110,7 @@ vnoremap <unique> k gk
 nnoremap <unique> \x  :bdelete<CR>
 nnoremap <unique> \v  :vsplit<CR>
 nnoremap <unique> \o  :bufdo only<CR>
+nnoremap <unique> \0  :bufdo only<CR>
 nnoremap <unique> \1  :e #1<CR>
 nnoremap <unique> \2  :e #2<CR>
 nnoremap <unique> \3  :e #3<CR>
