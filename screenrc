@@ -26,7 +26,6 @@ bind S eval "encoding sjis"  "!!!echo 'export LANG=ja_JP.SHIFT-JIS'"
 
 bind H split
 bind V split -v
->>>>>>> f88dc145871f419599cb432a7700a557c6a44e86
 
 #lessの後、実行前の画面に戻す
 altscreen on
