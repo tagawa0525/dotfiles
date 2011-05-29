@@ -1,6 +1,6 @@
 # for GNU screen
 # make screen title
-if [ "$TERM" = "screen" ]; then
+if [ "${TERM}" = "screen" ]; then
   function preexec() {
     emulate -L zsh
     local -a cmd; cmd=(${(z)2})

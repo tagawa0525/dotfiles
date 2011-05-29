@@ -39,6 +39,7 @@ for num in {1..10} ; do
   alias u${num}="cd ${dir}"
   alias ${num}u="cd ${dir}"
 done
+unset cmd dir num
 
 #------------------------------------------------------------
 # list

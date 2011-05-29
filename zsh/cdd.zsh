@@ -40,28 +40,28 @@
 # - Yuichi Tateno
 #
 
-export CDD_PWD_FILE=$HOME/.zsh/.ZSHRC_CDD_PWD_LIST
+export CDD_PWD_FILE=${HOME}/.zsh/.ZSHRC_CDD_PWD_LIST
 
 function _reg_pwd_screennum() {
-  if [ "$STY" != "" ]; then
-    if [ ! -f "$CDD_PWD_FILE" ]; then
-      echo "\n" >> "$CDD_PWD_FILE"
+  if [ "${STY}" != "" ]; then
+    if [ ! -f "${CDD_PWD_FILE}" ]; then
+      echo "\n" >> "${CDD_PWD_FILE}"
     fi
-    _reg_cdd_pwd "$WINDOW" "$PWD"
+    _reg_cdd_pwd "${WINDOW}" "${PWD}"
   fi
 }
 
 function _reg_cdd_pwd() {
-  if [ ! -f "$CDD_PWD_FILE" ]; then
-    echo "\n" >> "$CDD_PWD_FILE"
+  if [ ! -f "${CDD_PWD_FILE}" ]; then
+    echo "\n" >> "${CDD_PWD_FILE}"
     if [ $? = 1 ]; then
-      echo "Error: Dont wrote $CDD_PWD_FILE."
+      echo "Error: Dont wrote ${CDD_PWD_FILE}."
       return 1
     fi
   fi
-  sed -i".t" -e "/^$1:/d" "$CDD_PWD_FILE"
+  sed -i".t" -e "/^$1:/d" "${CDD_PWD_FILE}"
   sed -i".t" -e "1i \\
-$1:$2" "$CDD_PWD_FILE"
+$1:$2" "${CDD_PWD_FILE}"
 }
 
 function _cdadd {
@@ -81,8 +81,8 @@ function _cdadd {
       echo "cdd add require realpath or ruby"
     fi
   fi
-  echo "add $1:$real_path"
-  _reg_cdd_pwd "$1" "$real_path"
+  echo "add $1:${real_path}"
+  _reg_cdd_pwd "$1" "${real_path}"
 }
 
 function _cddel() {
@@ -90,7 +90,7 @@ function _cddel() {
     echo "Usage: cdd del name"
     return 1
   fi
-  sed -i".t" -e "/^$1:/d" "$CDD_PWD_FILE"
+  sed -i".t" -e "/^$1:/d" "${CDD_PWD_FILE}"
 }
 
 
@@ -108,19 +108,19 @@ function cdd() {
   local -A arg
   #arg=`echo $1|awk -F':' '{print \$1}'`
   arg=`echo $1|cut -d':' -f1`
-  #grep "^$arg:" "$CDD_PWD_FILE" > /dev/null 2>&1
-  if grep "^$arg:" "$CDD_PWD_FILE" > /dev/null 2>&1 ;then
+  #grep "^${org}:" "${CDD_PWD_FILE}" > /dev/null 2>&1
+  if grep "^${org}:" "${CDD_PWD_FILE}" > /dev/null 2>&1 ;then
     local -A res
-    res=`grep "^$arg:" "$CDD_PWD_FILE"|sed -e "s/^$arg://;"|tr -d "\n"`
-    echo "$res"
-    cd "$res"
+    res=`grep "^${org}:" "${CDD_PWD_FILE}"|sed -e "s/^${org}://;"|tr -d "\n"`
+    echo "${res}"
+    cd "${res}"
   else
-    sed -e '/^$/d' "$CDD_PWD_FILE"
+    sed -e '/^$/d' "${CDD_PWD_FILE}"
   fi
 }
 
 
 compctl -K _cdd cdd
 functions _cdd() {
-  reply=(`grep -v "^$WINDOW:" "$CDD_PWD_FILE"`)
+  reply=(`grep -v "^${WINDOW}:" "${CDD_PWD_FILE}"`)
 }
