@@ -8,5 +8,4 @@ export LD_LIBRARY_PATH='/opt/local/lib'
 
 alias ls='ls -h  -G'
 alias port='sudo port'
-alias gem='sudo gem'
 
