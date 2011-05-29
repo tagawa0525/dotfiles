@@ -1,4 +1,4 @@
-.vim/.*
-.zsh/.*
-.vim/vimSwap/*
-.vim/vimBackup/*
+vim/.*
+zsh/.*
+vim/vimSwap/*
+vim/vimBackup/*
