@@ -21,8 +21,12 @@ termcapinfo xterm|xterms|xs|rxvt ti@:te@
 
 ## ^/ U で UTF-8 , ^/ E で EUC-JP を切り替え
 bind U eval "encoding utf-8" "!!!echo 'export LANG=ja_JP.UTF-8'"
-bind E eval "encoding euc" "!!!echo 'export LANG=ja_JP.EUC-JP'"
-bind S eval "encoding sjis" "!!!echo 'export LANG=ja_JP.Shift-JIS"
+bind E eval "encoding euc"   "!!!echo 'export LANG=ja_JP.EUC-JP'"
+bind S eval "encoding sjis"  "!!!echo 'export LANG=ja_JP.SHIFT-JIS'"
+
+bind H split
+bind V split -v
+>>>>>>> f88dc145871f419599cb432a7700a557c6a44e86
 
 #lessの後、実行前の画面に戻す
 altscreen on
