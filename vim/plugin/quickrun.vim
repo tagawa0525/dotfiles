@@ -157,10 +157,9 @@ silent! nmap <unique> K  <Plug>(quickkeywordprg)
 augroup plugin-quickrun
   autocmd!
   autocmd Filetype awk        call s:set_quickrun_command('awk')
-  autocmd Filetype c          call s:set_quickrun_command('function __rungcc__() { gcc $1 && ./a.out } && __rungcc__')
-  autocmd Filetype objc       call s:set_quickrun_command('function __rungcc__() { gcc $1 && ./a.out } && __rungcc__')
-  autocmd Filetype cpp        call s:set_quickrun_command('function __rungcc__() { g++ $1 && ./a.out } && __rungcc__')
-  autocmd Filetype cc         call s:set_quickrun_command('function __rungcc__() { g++ $1 && ./a.out } && __rungcc__')
+  autocmd Filetype c          call s:set_quickrun_command("function __rungcc__() { gcc $1 && ./a.out } && __rungcc__")
+  autocmd Filetype objc       call s:set_quickrun_command("function __rungcc__() { gcc $1 && ./a.out } && __rungcc__")
+  autocmd Filetype cpp        call s:set_quickrun_command("function __rungcc__() { g++ $1 && ./a.out } && __rungcc__")
   autocmd Filetype haskell    call s:set_quickrun_command('runghc')
   autocmd Filetype io         call s:set_quickrun_command('io')
   autocmd Filetype javascript call s:set_quickrun_command('js')
