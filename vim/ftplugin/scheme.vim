@@ -1,3 +1,3 @@
-set nocindent
-set lisp
-set lispwords=define
+setlocal nocindent
+setlocal lisp
+setlocal lispwords=define

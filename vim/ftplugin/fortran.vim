@@ -1,22 +1,22 @@
 "===============================================================================
 " Indent
 "===============================================================================
-set autoindent   " autoindent
-set smartindent  " smartindent
-set nocindent      " do c-style indenting
-"set fo=tcrqn     " See Help (complex)
+setlocal autoindent   " autoindent
+setlocal smartindent  " smartindent
+setlocal nocindent      " do c-style indenting
+"setlocal fo=tcrqn     " See Help (complex)
 "===============================================================================
 " Tab
 "===============================================================================
-set expandtab
-set tabstop=8
-set softtabstop=8
-set smarttab
-set shiftwidth=2
+setlocal expandtab
+setlocal tabstop=2
+setlocal softtabstop=2
+setlocal shiftwidth=2
+setlocal smarttab
 "===============================================================================
 " Search
 "===============================================================================
-set hlsearch        " do not highlight searched for phrases
-set incsearch       " BUT do highlight as you type you search phrase
-set ignorecase
-set smartcase
+setlocal hlsearch        " do not highlight searched for phrases
+setlocal incsearch       " BUT do highlight as you type you search phrase
+setlocal ignorecase
+setlocal smartcase

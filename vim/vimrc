@@ -45,6 +45,8 @@ set ttyfast
 set lazyredraw      " do not redraw while running macros (much faster)
 set iminsert=0
 set imsearch=0
+au BufWritePost * mkview
+au BufReadPost  * loadview
 "===============================================================================
 " Path
 "===============================================================================
