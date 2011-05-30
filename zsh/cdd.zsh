@@ -42,7 +42,8 @@
 
 export CDD_PWD_FILE=${HOME}/.zsh/.ZSHRC_CDD_PWD_LIST
 
-function _reg_pwd_screennum() {
+function _reg_pwd_screennum()
+{
   if [ "${STY}" != "" ]; then
     if [ ! -f "${CDD_PWD_FILE}" ]; then
       echo "\n" >> "${CDD_PWD_FILE}"
@@ -51,7 +52,8 @@ function _reg_pwd_screennum() {
   fi
 }
 
-function _reg_cdd_pwd() {
+function _reg_cdd_pwd()
+{
   if [ ! -f "${CDD_PWD_FILE}" ]; then
     echo "\n" >> "${CDD_PWD_FILE}"
     if [ $? = 1 ]; then
@@ -61,10 +63,11 @@ function _reg_cdd_pwd() {
   fi
   sed -i".t" -e "/^$1:/d" "${CDD_PWD_FILE}"
   sed -i".t" -e "1i \\
-$1:$2" "${CDD_PWD_FILE}"
+  $1:$2" "${CDD_PWD_FILE}"
 }
 
-function _cdadd {
+function _cdadd
+{
   if [ -z "$1" ] || [ -z "$2" ]; then
     echo "Usage: cdd add name path"
     echo "Example: cdd add w ~/myworkspace"
@@ -85,7 +88,8 @@ function _cdadd {
   _reg_cdd_pwd "$1" "${real_path}"
 }
 
-function _cddel() {
+function _cddel()
+{
   if [ -z "$1" ]; then
     echo "Usage: cdd del name"
     return 1
@@ -94,7 +98,8 @@ function _cddel() {
 }
 
 
-function cdd() {
+function cdd()
+{
   if [ "$1" = "add" ]; then
     shift
     _cdadd $@
@@ -108,10 +113,10 @@ function cdd() {
   local -A arg
   #arg=`echo $1|awk -F':' '{print \$1}'`
   arg=`echo $1|cut -d':' -f1`
-  #grep "^${org}:" "${CDD_PWD_FILE}" > /dev/null 2>&1
-  if grep "^${org}:" "${CDD_PWD_FILE}" > /dev/null 2>&1 ;then
+  #grep "^${arg}:" "${CDD_PWD_FILE}" > /dev/null 2>&1
+  if grep "^${arg}:" "${CDD_PWD_FILE}" > /dev/null 2>&1 ;then
     local -A res
-    res=`grep "^${org}:" "${CDD_PWD_FILE}"|sed -e "s/^${org}://;"|tr -d "\n"`
+    res=`grep "^${arg}:" "${CDD_PWD_FILE}"|sed -e "s/^${arg}://;"|tr -d "\n"`
     echo "${res}"
     cd "${res}"
   else
@@ -121,6 +126,7 @@ function cdd() {
 
 
 compctl -K _cdd cdd
-functions _cdd() {
+functions _cdd()
+{
   reply=(`grep -v "^${WINDOW}:" "${CDD_PWD_FILE}"`)
 }
