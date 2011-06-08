@@ -1,6 +1,6 @@
 export LANG='ja_JP.UTF-8'
 export LSCOLORS='gxcxcxdxbxgegdabaeacad'
-export PATH=/opt/local/bin:/opt/local/sbin:${PATH}
+#export PATH=/opt/local/bin:/opt/local/sbin:${PATH}
 export MANPATH=/opt/local/share/man:/opt/local/man:${MANPATH}
 export CC='gcc'
 export CXX='g++'
