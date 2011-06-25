@@ -1,3 +1,6 @@
+#define BOOST_TEST_DYN_LINK
+#define BOOST_TEST_MAIN
+#include <boost/test/unit_test.hpp>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -5,8 +8,16 @@
 
 using namespace std;
 
-int main(int argc, char* argv[])
+class Foo
 {
+  public:
 
-  return 0;
+  private:
+
+};
+
+BOOST_AUTO_TEST_CASE( test_sample )
+{
+  Foo obj;
+  BOOST_CHECK_EQUAL(1,1);
 }
