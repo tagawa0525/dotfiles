@@ -36,11 +36,11 @@ defencoding UTF-8
 defkanji UTF-8
 
 #screen -t irb  0 irb
-screen 2
-screen 4
-screen 3
-
 #screen 9
 #screen 7
 #screen 8
+
+#screen 2
+#screen 4
+screen 3
 
