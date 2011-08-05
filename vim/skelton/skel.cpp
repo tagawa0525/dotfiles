@@ -8,16 +8,24 @@
 
 using namespace std;
 
-class Foo
-{
+class Foo {
   public:
-
+    bool bar()
+    {
+      return true;
+    }
   private:
 
 };
 
-BOOST_AUTO_TEST_CASE( test_sample )
+bool baz()
+{
+  return true;
+}
+
+BOOST_AUTO_TEST_CASE( test_Foo )
 {
   Foo obj;
-  BOOST_CHECK_EQUAL(1,1);
+  BOOST_CHECK_EQUAL(obj.bar(),true);
+  BOOST_CHECK_EQUAL(baz(),true);
 }

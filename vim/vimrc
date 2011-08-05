@@ -140,12 +140,12 @@ autocmd FileType scheme :let is_gauche=1
 "===============================================================================
 " template
 "===============================================================================
-autocmd BufNewFile *.rb     0r ~/.vim/template/temp.rb
-autocmd BufNewFile *.cpp    0r ~/.vim/template/temp.cpp
-autocmd BufNewFile *.cc     0r ~/.vim/template/temp.cc
-autocmd BufNewFile *.c      0r ~/.vim/template/temp.c
-autocmd BufNewFile *.sh     0r ~/.vim/template/temp.sh
-autocmd BufNewFile *.zsh    0r ~/.vim/template/temp.zsh
+autocmd BufNewFile *.rb     0r ~/.vim/skelton/skel.rb
+autocmd BufNewFile *.cpp    0r ~/.vim/skelton/skel.cpp
+autocmd BufNewFile *.cc     0r ~/.vim/skelton/skel.cc
+autocmd BufNewFile *.c      0r ~/.vim/skelton/skel.c
+autocmd BufNewFile *.sh     0r ~/.vim/skelton/skel.sh
+autocmd BufNewFile *.zsh    0r ~/.vim/skelton/skel.zsh
 "===============================================================================
 " Plugins
 "===============================================================================

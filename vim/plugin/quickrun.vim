@@ -167,6 +167,7 @@ augroup plugin-quickrun
   autocmd Filetype php        call s:set_quickrun_command('php')
   autocmd Filetype python     call s:set_quickrun_command('python')
   autocmd Filetype ruby       call s:set_quickrun_command('ruby')
+  autocmd Filetype r          call s:set_quickrun_command('R --slave --no-save < ')
   autocmd Filetype scala      call s:set_quickrun_command('scala')
   autocmd Filetype scheme     call s:set_quickrun_command('gosh')
   autocmd Filetype sed        call s:set_quickrun_command('sed')
