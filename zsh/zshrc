@@ -63,14 +63,15 @@ setopt  auto_param_keys     # カッコの対応などを自動的に補完
 # プロンプト
 ################################################################################
 #PROMPT=$'\n'$GREEN'${USER}@${HOSTNAME} '$YELLOW'%~ '$'\n'$DEFAULT'%(!.#.$) '
+#RPROMPT="%1(v|%F{green}%1v%f|) ${USER}@${HOST} [%(?.%!.ERROR:%?)]"
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' branchformat  '%b:r%r'
 zstyle ':vcs_info:*' formats       '[%b]-%s'
 zstyle ':vcs_info:*' actionformats '[%b|%a]-%s'
-PROMPT="[ %~ ]
->"
-PROMPT2="_ "
-RPROMPT="%1(v|%F{green}%1v%f|) ${USER}@${HOST} [%(?.%!.ERROR:%?)]"
+PROMPT="[ %~ ] %1(v|%F{green}%1v%f|) %n@%m %!
+%# "
+PROMPT2="%_%# "
+RPROMPT=""
 # プロンプトオプション
 setopt  prompt_subst
 setopt  always_last_prompt    # カーソル位置は保持したままファイル名一覧を順次その場で表示
