@@ -112,6 +112,7 @@ vnoremap <unique> k gk
 " Buffer
 nnoremap <unique> \x  :bdelete<CR>
 nnoremap <unique> \v  :vsplit<CR>
+nnoremap <unique> \h  :split<CR>
 nnoremap <unique> \o  :bufdo only<CR>
 nnoremap <unique> \0  :bufdo only<CR>
 nnoremap <unique> \1  :e #1<CR>
