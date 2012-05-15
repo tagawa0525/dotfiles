@@ -5,11 +5,7 @@ function chpwd()
 {
   ls -G
   _reg_pwd_screennum
-  psvar=()
-  LANG=en_US.UTF-8 vcs_info
-  [ -n "${vcs_info_msg_0_}" ] && psvar[1]="${vcs_info_msg_0_}"
 }
-
 alias cd..='cd ..'
 alias cdp='cd ${HOME}/python/prac'
 alias cdr='cd ${HOME}/ruby/prac'

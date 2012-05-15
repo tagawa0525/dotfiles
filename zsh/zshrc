@@ -65,13 +65,23 @@ setopt  auto_param_keys     # カッコの対応などを自動的に補完
 #PROMPT=$'\n'$GREEN'${USER}@${HOSTNAME} '$YELLOW'%~ '$'\n'$DEFAULT'%(!.#.$) '
 #RPROMPT="%1(v|%F{green}%1v%f|) ${USER}@${HOST} [%(?.%!.ERROR:%?)]"
 autoload -Uz vcs_info
-zstyle ':vcs_info:*' branchformat  '%b:r%r'
-zstyle ':vcs_info:*' formats       '[%b]-%s'
-zstyle ':vcs_info:*' actionformats '[%b|%a]-%s'
-PROMPT="[ %~ ] %1(v|%F{green}%1v%f|) %n@%m %!
+zstyle ':vcs_info:*'            enable svn git bzr hg
+zstyle ':vcs_info:*'            formats       '[%s-%b]'
+zstyle ':vcs_info:*'            actionformats '[%s-%b|%a]'
+zstyle ':vcs_info:(svn|bzr):*'  branchformat  '%b:r%r'
+zstyle ':vcs_info:bzr:*'        use-simple true
+PROMPT="%n@%m %! [ %F{red}%~%f ] %1(v|%F{green}%1v%f|) 
 %# "
 PROMPT2="%_%# "
 RPROMPT=""
+
+precmd ()
+{
+  psvar=()
+  LANG=en_US.UTF-8 vcs_info
+  [[ -n "${vcs_info_msg_0_}" ]] && psvar[1]="${vcs_info_msg_0_}"
+}
+
 # プロンプトオプション
 setopt  prompt_subst
 setopt  always_last_prompt    # カーソル位置は保持したままファイル名一覧を順次その場で表示
