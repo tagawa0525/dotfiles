@@ -136,6 +136,7 @@ autocmd FileType ruby,eruby nnoremap <silent> K :Refe <cwrod><CR>
 " Syntax
 "===============================================================================
 syntax on
+set background=dark
 " scheme
 autocmd FileType scheme :let is_gauche=1
 "===============================================================================
