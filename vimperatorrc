@@ -1,0 +1,66 @@
+set titlestring=Firefox
+set wildmode=list:full
+set complete=l
+set defsearch=g
+set visualbell
+set! ui.key.contentAccess=5
+highlight Bell display:none
+highlight Hint z-index:5000; font-family:monospace; font-size:16px; color:white; background-color:blue; border-color:ButtonShadow; border-width:0px; border-style:solid; padding:0px 1px 0px 1px; position:absolute;
+highlight StatusLine color:black; background:#BBB; font-weight:normal;
+
+noremap  <C-k>  <Nop>
+noremap  <BS>   <Nop>
+noremap  h      H
+noremap  l      L
+noremap  <C-p>   <Up>
+noremap  <C-n>   <Down>
+
+inoremap <C-f>  <Right>
+inoremap <C-b>  <Left>
+inoremap <C-p>  <Up>
+inoremap <C-n>  <Down>
+inoremap <C-l>  <Nop>
+inoremap <C-h>  <BS>
+inoremap <C-m>  <Enter>
+
+cnoremap <C-f>  <Right>
+cnoremap <C-b>  <Left>
+cnoremap <C-p>  <Up>
+cnoremap <C-n>  <Down>
+cnoremap <C-m>  <Retrun>
+cnoremap <C-m>  <Enter>
+
+set nextpattern=^次(へ|の|ペ),^続き,\bnext\b,^>$,^(>>|&#187;)$,^(>|&#187;),(>|&#187;)$,\bmore\b
+set previouspattern=^前(へ|の|ペ),^戻る,\bprev|previous\b,^<$,^(<<|&#171;)$,^(<|&#171;),(<|&#171;)$
+
+javascript <<EOM
+[
+  [ 'H',     ':tabmove! -1' ],
+  [ 'L',     ':tabmove! +1' ],
+  [ 'q',     ':toggleldrc' ],
+  [ '<C-h>', ':tabprevious' ],
+  [ '<C-l>', ':tabnext' ],
+].forEach(function([key, command]){
+  liberator.modules.mappings.addUserMap([liberator.modules.modes.NORMAL], [key],
+    "use defined mapping",
+    function () { liberator.execute(command); },
+    {
+      rhs: key,
+      noremap: true
+    });
+});
+EOM
+
+command! -nargs=+ lazy autocmd VimperatorEnter .* <args>
+
+" Evernote
+command clip javascript Evernote.Overlay.init(null)
+" Gmail
+lazy fmaps -u='^https?://mail\.google\.com/(mail|a)/' c / j k n p o u e x s r a # [ ] z ? gi gs gt gd ga gc *a *n *u *r *s *t
+" LDR/Fastladder (use: tombloo.xpi, ldr+tombloo.user.js, ldr_relative_rate.user.js)
+lazy fmaps -u='^http://(reader\.livedoor|fastladder)\.com/reader/' j k s a p v c z Z b B e r < > o J,<Space> K,<S-Space> q w g u
+lazy fmaps -u='^http://(reader\.livedoor|fastladder)\.com/reader/' -events=vkeypress i,Tj T
+" Google Reader
+lazy fmaps -u='www\.google\.(co\.jp|com)/reader' -events=vkeypress j k n p m s v A r S N P X O gh ga gs gt gu u / ? J K
+" Google Reader Full Feed
+lazy fmaps -u='www\.google\.(co\.jp|com)/reader' -events=vkeyup z
