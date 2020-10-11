@@ -148,8 +148,8 @@ setopt  rm_star_silent        # "rm * " を実行する前に確認しない
 ################################################################################
 # その他の設定ファイルの読み込み
 ################################################################################
-for name in 'alias' 'cdd' `uname` ; do
-  [ -f ${HOME}/.zsh/${name}.zsh ]   && source ${HOME}/.zsh/${name}.zsh
+for name in `uname` 'alias' 'cdd' ; do
+  [ -f ${HOME}/.zsh/${name}.zsh ] && source ${HOME}/.zsh/${name}.zsh
 done
 unset name
 

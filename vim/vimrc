@@ -65,7 +65,7 @@ set cindent      " do c-style indenting
 "===============================================================================
 " Tab
 "===============================================================================
-set expandtab
+set noexpandtab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
@@ -142,6 +142,7 @@ autocmd FileType scheme :let is_gauche=1
 "===============================================================================
 " template
 "===============================================================================
+autocmd BufNewFile *.py     0r ~/.vim/skelton/skel.py
 autocmd BufNewFile *.rb     0r ~/.vim/skelton/skel.rb
 autocmd BufNewFile *.cpp    0r ~/.vim/skelton/skel.cpp
 autocmd BufNewFile *.cc     0r ~/.vim/skelton/skel.cc
