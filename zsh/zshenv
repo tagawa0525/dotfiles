@@ -1,3 +1,4 @@
+typeset -U path PATH
 export EDITOR=`which vim`
 export CVS_EDITOR=${EDITOR}
 export SVN_EDITOR=${EDITOR}
