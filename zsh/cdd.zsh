@@ -1,3 +1,5 @@
+#! /bin/zsh
+
 # vim: ft=sh
 # https://github.com/m4i/cdd
 
@@ -99,9 +101,9 @@ Usage:
   cdd help|--help|-h            print this help message
 
 __EOT__
-  if [ -f "$CDD_FILE" ]; then
-    sort "$CDD_FILE" >&2
-  fi
+if [ -f "$CDD_FILE" ]; then
+  sort "$CDD_FILE" >&2
+fi
 }
 
 
@@ -252,13 +254,13 @@ if [ -n "$ZSH_VERSION" ]; then
     if (( CURRENT == 2 )); then
       local _cdd_file="$(echo "$CDD_FILE" | sed "s;^$HOME;~;")"
       opts=(
-        "add:add the directory to $_cdd_file"
-        "delete:delete the directory from $_cdd_file"
-      )
-      _describe -t commands 'cdd command' opts && ret=0
+      "add:add the directory to $_cdd_file"
+      "delete:delete the directory from $_cdd_file"
+    )
+    _describe -t commands 'cdd command' opts && ret=0
 
-    elif (( CURRENT == 4 )) && [[ $command = add ]]; then
-      _path_files -/ 'directory' && ret=0
+  elif (( CURRENT == 4 )) && [[ $command = add ]]; then
+    _path_files -/ 'directory' && ret=0
     fi
 
     return ret
@@ -287,9 +289,9 @@ elif [ -n "$BASH_VERSION" ]; then
       #   "cdd" "add" "foo" ":" "/foo" ||
       #   "cdd" "add" "foo:/foo"
       if (( CURRENT == 6 )) && [[ ${COMP_WORDS[3]} = : ]] || \
-         (( CURRENT == 4 )); then
-        cur="$(echo "$cur" | sed "s;^~;$HOME;")"
-        _cdd_opts="$(compgen -d "$cur" | sed -e 's/ /\\\\ /g' -e 's;$;/;')"
+        (( CURRENT == 4 )); then
+              cur="$(echo "$cur" | sed "s;^~;$HOME;")"
+              _cdd_opts="$(compgen -d "$cur" | sed -e 's/ /\\\\ /g' -e 's;$;/;')"
       fi
     fi
 
@@ -301,3 +303,4 @@ elif [ -n "$BASH_VERSION" ]; then
   complete -F _cdd -o nospace cdd
 
 fi
+

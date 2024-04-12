@@ -31,7 +31,7 @@ bind V split -v
 altscreen on
 
 # 起動時の設定
-shell zsh
+shell /bin/zsh
 defencoding UTF-8
 defkanji UTF-8
 

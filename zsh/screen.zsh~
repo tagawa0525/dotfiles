@@ -1,3 +1,5 @@
+#! /bin/zsh
+
 # for GNU screen
 # make screen title
 if [ "${TERM}" = "screen" ]; then
@@ -43,12 +45,13 @@ if [ "${TERM}" = "screen" ]; then
     local -A jt; jt=(${(kv)jobtexts})
 
     $cmd >>(
-      read num rest
-      cmd=(${(z)${(e):-\$jt$num}})
-      echo -n "k$cmd[1]:t\\"
+    read num rest
+    cmd=(${(z)${(e):-\$jt$num}})
+    echo -n "k$cmd[1]:t\\"
     ) 2>/dev/null
   }
   change_status_title() {
     echo -n "k$1\\"
   }
 fi
+

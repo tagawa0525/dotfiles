@@ -1,3 +1,5 @@
+#! /bin/zsh
+
 #------------------------------------------------------------
 # chdir
 #------------------------------------------------------------
@@ -94,4 +96,6 @@ alias -g V='| vi -R -'
 alias -g T='| tail'
 alias -g H='| head'
 alias -g W='| wc'
+
+alias chrome='"/mnt/c/Program Files (x86)/Google/Chrome/Application/chrome.exe"'
 

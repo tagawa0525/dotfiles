@@ -19,11 +19,13 @@ set laststatus=2
 set statusline=[%{&fileencoding}][%{&fileformat}]%H%W\ %n%y:\ %f%<\ %r%m%=0x%B=%b\ (%l,%c)\ %P
 set showmatch       " show matching brackets
 set matchtime=5     " how many tenths of a second to blink matching brackets for
+set belloff=all
 set noerrorbells    " don't make noise
 set novisualbell    " don't blink
 set linespace=0
 set showcmd
 set list
+set fileencodings=utf-8,cp932
 set listchars=tab:\|\ ,trail:.,extends:>,precedes:< " what to show when I hit :set list
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=white
 match ZenkakuSpace /　/
