@@ -36,7 +36,7 @@ else
     if [ -n "${target_session}" ] ;then
       tmux attach-session -t ${target_session}
     else
-      num_max=$(tmux ls | egrep -m1 "^${group_name}" | sort -r | cut -d: -f1 | cut -d- -f3)
+      num_max=$(tmux ls | egrep -m1 "^${group_name}" | sort -r | cut -d: -f1 | sed s/^${group_name}-//)
       num_next=$((${num_max}+1))
       session_name=${group_name}-${num_next}
       tmux new-session -t ${group_name} -s ${session_name}
