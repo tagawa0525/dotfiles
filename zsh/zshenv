@@ -1,12 +1,31 @@
 #! /bin/zsh
 
+################################################################################
+# その他の設定ファイルの読み込み
+################################################################################
+for name in `uname` 'alias' 'screen' 'tmux' 'cdd' ; do
+  file=${HOME}/.zsh/${name}.zshenv
+  [ -f ${file} ] && source ${file}
+done
+unset name file
 typeset -U path PATH
-export EDITOR=`which vim`
+
+for name in 'pyenv' 'goenv' 'rbenv' ; do
+  file=/etc/profile.d/${name}.sh
+  [ -f ${file} ] && source ${file}
+done
+unset name file
+
+#export LANG=ja_JP.utf8
+export LANG=en_US.utf8
+
+export TIME_STYLE="long-iso"
+
+export PAGER='more'
+export EDITOR='vim'
 export CVS_EDITOR=${EDITOR}
 export SVN_EDITOR=${EDITOR}
 export GIT_EDITOR=${EDITOR}
 export BZR_EDITOR=${EDITOR}
 export HGENCODING='UTF-8'
-
-source "$HOME/.cargo/env"
 

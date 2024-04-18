@@ -42,7 +42,6 @@ fi
 CDD_SESSION="$(echo "$CDD_SESSION" | sed 's/:/_/g')"
 export CDD_SESSION CDD_WINDOW CDD_PANE
 
-
 cdd() {
   if [ $# -eq 0 ]; then
     _cdd_cd last
@@ -101,9 +100,9 @@ Usage:
   cdd help|--help|-h            print this help message
 
 __EOT__
-if [ -f "$CDD_FILE" ]; then
-  sort "$CDD_FILE" >&2
-fi
+  if [ -f "$CDD_FILE" ]; then
+    sort "$CDD_FILE" >&2
+  fi
 }
 
 
@@ -174,16 +173,16 @@ _cdd_delete() {
 _cdd_canonicalize_key() {
   local key="${1%%:*}"
 
-  if echo "$key" | grep '^\(.+,\)\?[0-9]+\.\?$' >/dev/null; then
+  if echo "$key" | grep '^\(.\+,\)\?[0-9]\+\.\?$' >/dev/null; then
     if [[ $key != *. ]]; then
       key="$key."
     fi
     key="${key}0"
   fi
-  if echo "$key" | grep '^[0-9]+.[0-9]+$' >/dev/null; then
+  if echo "$key" | grep '^[0-9]\+.[0-9]\+$' >/dev/null; then
     key="${CDD_SESSION:-_},$key"
   fi
-  if echo "$key" | grep '^[0-9]+$' >/dev/null; then
+  if echo "$key" | grep '^[0-9]\+$' >/dev/null; then
     key="${CDD_SESSION:-_},$key.0"
   fi
 
@@ -254,13 +253,13 @@ if [ -n "$ZSH_VERSION" ]; then
     if (( CURRENT == 2 )); then
       local _cdd_file="$(echo "$CDD_FILE" | sed "s;^$HOME;~;")"
       opts=(
-      "add:add the directory to $_cdd_file"
-      "delete:delete the directory from $_cdd_file"
-    )
-    _describe -t commands 'cdd command' opts && ret=0
+        "add:add the directory to $_cdd_file"
+        "delete:delete the directory from $_cdd_file"
+      )
+      _describe -t commands 'cdd command' opts && ret=0
 
-  elif (( CURRENT == 4 )) && [[ $command = add ]]; then
-    _path_files -/ 'directory' && ret=0
+    elif (( CURRENT == 4 )) && [[ $command = add ]]; then
+      _path_files -/ 'directory' && ret=0
     fi
 
     return ret
@@ -289,9 +288,9 @@ elif [ -n "$BASH_VERSION" ]; then
       #   "cdd" "add" "foo" ":" "/foo" ||
       #   "cdd" "add" "foo:/foo"
       if (( CURRENT == 6 )) && [[ ${COMP_WORDS[3]} = : ]] || \
-        (( CURRENT == 4 )); then
-              cur="$(echo "$cur" | sed "s;^~;$HOME;")"
-              _cdd_opts="$(compgen -d "$cur" | sed -e 's/ /\\\\ /g' -e 's;$;/;')"
+         (( CURRENT == 4 )); then
+        cur="$(echo "$cur" | sed "s;^~;$HOME;")"
+        _cdd_opts="$(compgen -d "$cur" | sed -e 's/ /\\\\ /g' -e 's;$;/;')"
       fi
     fi
 
