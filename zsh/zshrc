@@ -137,6 +137,9 @@ unset name file
 typeset -U path cdpath fpath manpath ld_library_path
  
 if [ -n "${TMUX}" ]; then
+  cdd ${CDD_WINDOW}
+  [ -n "${STY}" ] && echo -en "\ek$(basename $(pwd))\e\\"   # for screen
+  [ -n "${TMUX}" ] && tmux rename-window $(basename $(pwd)) # for tmux
   tmux wait-for -S ${CDD_WINDOW}
 fi
 
