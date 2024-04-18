@@ -32,11 +32,13 @@ else
     # attachされていないsessionが残っている場合はそれを使用し、
     # 残っていない場合はduplicate sessionを作る。
     group_name=`whoami`@`hostname`
-    target_session=$(tmux ls | egrep "^${group_name}" | sort | grep -vm1 attached | cut -d: -f1)
+    # target_session=$(tmux ls | ruby -ne "puts \$1 if \$_.match(/(${group_name}-\\d+):.*attached/)" | sort | tail -n1)
+    target_session=$(tmux ls | egrep "^${group_name}" | egrep -v 'attached' | sort | head -n1 | cut -d: -f1)
     if [ -n "${target_session}" ] ;then
       tmux attach-session -t ${target_session}
     else
-      num_max=$(tmux ls | egrep -m1 "^${group_name}" | sort -r | cut -d: -f1 | sed s/^${group_name}-//)
+      # num_next=$(tmux ls | ruby -ne "puts(\$1.to_i + 1) if \$_.match(/${group_name}-(\\d+):/)" | sort | tail -n1)
+      num_max=$(tmux ls | egrep "^${group_name}" | sed s/^${group_name}-// | sort | tail -n1 | cut -d: -f1)
       num_next=$((${num_max}+1))
       session_name=${group_name}-${num_next}
       tmux new-session -t ${group_name} -s ${session_name}
